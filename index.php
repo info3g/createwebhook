@@ -9,11 +9,7 @@ use phpish\shopify;
 if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
 {
   $access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
-  $webhook_url = 'https://'.SHOPIFY_APP_API_KEY.':'.$access_token.'@'.$_REQUEST['shop'].'/admin/webhooks.json';
-  
-  $webData = file_get_contents($webhook_url);
-  print_r($webData);
-  
+  $webhook_url = 'https://'.SHOPIFY_APP_API_KEY.':'.$access_token.'@'.$_REQUEST['shop'].'/admin/webhooks.json'; 
   $address = WEBHOOK_APP_URL.'/webhook.php';
   $webhook_data = array('webhook' =>
     array(
@@ -30,7 +26,6 @@ if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
   curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Content-Length: ' . strlen($webhookdata)));
   $curlResponse = curl_exec($ch);
   curl_close($ch);
-  print_r($curlResponse);
   echo 'Webhook Created/Updated Successfully!';
 }
 ?>
