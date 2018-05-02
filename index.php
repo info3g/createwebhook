@@ -9,7 +9,11 @@ use phpish\shopify;
 if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
 {
   $access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
-  echo $webhook_url = 'https://'.SHOPIFY_APP_API_KEY.':'.$access_token.'@'.$_REQUEST['shop'].'/admin/webhooks.json';
+  $webhook_url = 'https://'.SHOPIFY_APP_API_KEY.':'.$access_token.'@'.$_REQUEST['shop'].'/admin/webhooks.json';
+  
+  $webData = file_get_contents($webhook_url);
+  print_r($webData);
+  
   $address = WEBHOOK_APP_URL.'/webhook.php';
   $webhook_data = array('webhook' =>
     array(
