@@ -11,7 +11,7 @@ if(isset($_REQUEST['shop']))
   $webhook_data = array('webhook' =>
     array(
       'topic' => 'products/update',
-      'address' => WP_SHOP_URL,
+      'address' => 'https://createwebhook.herokuapp.com/webhook.php',
       'format' => 'json'
     )
   );
