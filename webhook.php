@@ -13,13 +13,13 @@ $hmac_header = $_SERVER['HTTP_X_SHOPIFY_HMAC_SHA256'];
 $data = file_get_contents('php://input');
 $verified = verify_webhook($data, $hmac_header);
 error_log('Webhook verified: '.var_export($verified, true));
-if($verified) {
+//if($verified) {
   $dataarray[] = json_decode($wdata, true);
   $logPath = __DIR__. "/webhookLog.txt";
   $mode = (!file_exists($logPath)) ? 'w':'a';
   $logfile = fopen($logPath, $mode);
   fwrite($logfile, "\r\n". $data);
   fclose($logfile);
-} 
+//} 
   
 ?>
