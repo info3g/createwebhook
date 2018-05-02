@@ -15,7 +15,7 @@ $verified = verify_webhook($data, $hmac_header);
 error_log('Webhook verified: '.var_export($verified, true));
 //if($verified) {
   $dataarray[] = json_decode($wdata, true);
-  $logPath = __DIR__. "/webhookLog.txt";
+  $logPath = WEBHOOK_APP_URL. "/webhookLog.txt";
   $mode = (!file_exists($logPath)) ? 'w':'a';
   $logfile = fopen($logPath, $mode);
   fwrite($logfile, "\r\n". $data);
