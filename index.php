@@ -5,7 +5,7 @@ echo "<h1>welcome to Webhook Auto Creation app</h1>";
 require __DIR__.'/conf.php'; 
 require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
-mail('samriti.3ginfo@gmail.com', 'Testingggg' , 'message sent');
+
 if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
 {
   $access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
