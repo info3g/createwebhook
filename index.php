@@ -12,7 +12,7 @@ if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
   $webhook_url = 'https://'.SHOPIFY_APP_API_KEY.':'.$access_token.'@'.$_REQUEST['shop'].'/admin/webhooks.json';
   $webhook_data = array('webhook' =>
     array(
-      'topic' => 'products/update',
+      'topic' => 'orders/create',
       'address' => 'https://createwebhook.herokuapp.com/webhook.php',
       'format' => 'json'
     )
