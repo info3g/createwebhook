@@ -3,8 +3,9 @@ require __DIR__.'/conf.php';
 require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
 
-$logPath = WEBHOOK_APP_URL."/webhookLog.txt";
-$mode = (!file_exists($logPath)) ? 'w':'a';
+ $logPath = WEBHOOK_APP_URL."/webhookLog.txt";
+ $logfile = fopen($logPath, 'w');
+ fwrite($logfile, 'Add content');
 
 function verify_webhook($data, $hmac_header) {
   $calculated_hmac = base64_encode(hash_hmac('sha256', $data, SHOPIFY_APP_SHARED_SECRET, true));
