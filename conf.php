@@ -1,6 +1,6 @@
 <?php
 //adding
-define('SHOPIFY_APP_API_KEY', 'f3fbece71ca0e9d130649d01c431b831');
-define('SHOPIFY_APP_SHARED_SECRET', '17eb1f939ff7b9608e3d9019ccd6275c');
+define('SHOPIFY_APP_API_KEY', '00b6bc18f35aea253a43aa4d89ca9e5f');
+define('SHOPIFY_APP_SHARED_SECRET', 'c55e46ed8706089c6d710a038155bcab');
 define('WEBHOOK_APP_URL','https://createwebhook.herokuapp.com');
 ?>
