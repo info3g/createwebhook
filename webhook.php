@@ -2,8 +2,11 @@
 require __DIR__.'/conf.php'; 
 require __DIR__.'/vendor/autoload.php';
 use phpish\shopify;
-
-$shop = $_REQUEST['shop'];
+if(isset($_REQUEST['shop'])) {
+	$shop = $_REQUEST['shop'];
+} else {
+	$shop = '';
+}
 function verify_webhook($data, $hmac_header) {
   $calculated_hmac = base64_encode(hash_hmac('sha256', $data, SHOPIFY_APP_SHARED_SECRET, true));
   if($hmac_header == $calculated_hmac) {
