@@ -22,7 +22,7 @@ if(!empty($fetch_webhooks)){
 	      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 	      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	      curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json'));
-	      echo $curlResponse = curl_exec($ch);
+	      $curlResponse = curl_exec($ch);
 	      curl_close($ch);
 	  }
      }
