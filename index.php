@@ -11,6 +11,22 @@ if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
   $access_token = shopify\access_token($_REQUEST['shop'], SHOPIFY_APP_API_KEY, SHOPIFY_APP_SHARED_SECRET, $_REQUEST['code']);
   echo $webhook_url = 'https://'.SHOPIFY_APP_API_KEY.':'.$access_token.'@'.$_REQUEST['shop'].'/admin/webhooks.json'; 
   echo $address = WEBHOOK_APP_URL.'/webhook.php?shop='.$_REQUEST['shop'];
+  
+$fetch_webhooks = file_get_contents($webhook_url);
+$fetch_webhooks = json_decode($fetch_webhooks, true);
+if(!empty($fetch_webhooks)){
+	foreach($fetch_webhooks['webhooks'] as $webhooks){
+		if($webhooks['topic'] == 'orders/create') {
+      $ch = curl_init($webhook_url);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json'));
+      echo $curlResponse = curl_exec($ch);
+      curl_close($ch);
+		}
+	}
+}
+  
   $webhook_data = array('webhook' =>
     array(
       'topic' => 'orders/create',
