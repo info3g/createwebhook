@@ -13,6 +13,8 @@ if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
   echo $address = WEBHOOK_APP_URL.'/webhook.php?shop='.$_REQUEST['shop'];
   
 $fetch_webhooks = file_get_contents($webhook_url);
+print_r($fetch_webhooks);
+echo 'Fetch Webhook Data';
 $fetch_webhooks = json_decode($fetch_webhooks, true);
 if(!empty($fetch_webhooks)){
 	foreach($fetch_webhooks['webhooks'] as $webhooks){
