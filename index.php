@@ -24,7 +24,7 @@ if(isset($_REQUEST['shop']) && isset($_REQUEST['code']))
   curl_setopt($ch, CURLOPT_POSTFIELDS, $webhookdata);
   curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Content-Length: ' . strlen($webhookdata)));
-  $curlResponse = curl_exec($ch);
+  echo $curlResponse = curl_exec($ch);
   curl_close($ch);
   echo 'Webhook Created/Updated Successfully!';
 }
